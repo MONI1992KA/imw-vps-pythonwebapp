@@ -3,6 +3,7 @@
 ## Pasos
 
 Conéctate al servidor por SSH:
+
 ssh isard@<server-ip>
 
 Tenemos que estar en root directamente para que funcione nuestra aplicación. 
@@ -14,6 +15,7 @@ git clone https://github.com/MONI1992KA/imw-vps-pythonwebapp
 Asigna permisos de ejecución y ejecuta el script:
 
 chmod +x setup_python_webapp.sh
+
 ./setup_python_webapp.sh
 
 # Instrucciones posteriores a la instalación
