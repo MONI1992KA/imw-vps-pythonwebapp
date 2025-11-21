@@ -4,7 +4,7 @@
 
 Conéctate al servidor por SSH:
 
-ssh isard@<server-ip>
+"ssh isard@<server-ip>"
 
 Tenemos que estar en root directamente para que funcione nuestra aplicación. 
 
