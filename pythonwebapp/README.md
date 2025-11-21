@@ -1,4 +1,4 @@
-# Tutorial para poner en marcha el programa atraves de un script.
+# Tutorial para poner en marcha el programa con un script.
 
 ## Pasos
 
