@@ -51,10 +51,10 @@ def index():
         display:inline-block; margin-top:14px; padding:10px 18px;
         border-radius:8px; font-weight:700; text-decoration:none;
         border:1px solid rgba(255,255,255,0.06); cursor:pointer;
-        transition:transform .12s ease, box-shadow .12s ease;
+                transition:transform .12s ease, box-shadow .12s ease;
     }}
-    .show-btn {{ background:linear-gradient(180deg,rgba(0,255,170,0.12),rgba(0,255,170,0.05)); color:#bfffe6; }}
-    .contact-btn {{ background:linear-gradient(180deg,rgba(0,150,255,0.12),rgba(0,150,255,0.05)); color:#bfe6ff; }}
+    .show-btn {{ background:linear-gradient(180deg,rgba(0,255,170,0.12),rgba(0,255,170,0.05)); color:#>
+    .contact-btn {{ background:linear-gradient(180deg,rgba(0,150,255,0.12),rgba(0,150,255,0.05)); colo>
     .show-btn:hover,.contact-btn:hover {{
         transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,255,150,0.08);
     }}
@@ -101,15 +101,15 @@ def index():
         <button class="back-btn" id="backBtn">Atrás</button>
     </div>
     <script>
-    const resolution = document.getElementById('resolution');
+        const resolution = document.getElementById('resolution');
     resolution.textContent = window.screen.width + ' x ' + window.screen.height;
     const openBtn=document.getElementById('openAnim');
     const overlay=document.getElementById('overlay');
     const backBtn=document.getElementById('backBtn');
     const video=document.getElementById('videoFill');
-    openBtn.addEventListener('click',()=>{{overlay.classList.add('show');video.play();document.body.style.overflow='hidden';}});
-    backBtn.addEventListener('click',()=>{{overlay.classList.remove('show');video.pause();document.body.style.overflow='';}});
-    document.addEventListener('keydown',(e)=>{{if(e.key==='Escape'&&overlay.classList.contains('show')){{overlay.classList.remove('show');video.pause();document.body.style.overflow='';}}}});
+    openBtn.addEventListener('click',()=>{{overlay.classList.add('show');video.play();document.body.st>
+    backBtn.addEventListener('click',()=>{{overlay.classList.remove('show');video.pause();document.bod>
+    document.addEventListener('keydown',(e)=>{{if(e.key==='Escape'&&overlay.classList.contains('show')>
     </script>
     </body>
     </html>
@@ -125,38 +125,22 @@ def contacto():
         print("📨 Formulario enviado!")
         return redirect(url_for('confirmacion'))
     fondo_gif_url = "/static/fondo.gif"
-    return f"<h1 style='color:white;text-align:center;margin-top:40px;'>Contacto aquí (simplificado)</h1>"
+    return f"<h1 style='color:white;text-align:center;margin-top:40px;'>Contacto aquí (simplificado)</>
 
 # -------------------------- #
 # Página de confirmación     #
 # -------------------------- #
 @app.route('/confirmacion')
 def confirmacion():
-    return "<h1 style='color:lightgreen;text-align:center;margin-top:40px;'>Mensaje enviado correctamente ✔</h1>"
+    return "<h1 style='color:lightgreen;text-align:center;margin-top:40px;'>Mensaje enviado correctame>
 
 # -------------------------- #
 # Ejecutar servidor          #
 # -------------------------- #
-import ssl, threading
-
-def generar_certificado():
-    if not os.path.exists("cert.pem") or not os.path.exists("key.pem"):
-        os.system(
-            "openssl req -x509 -newkey rsa:2048 -nodes "
-            "-out cert.pem -keyout key.pem -days 365 "
-            "-subj '/CN=localhost'"
-        )
-
 def run_http():
     app.run(host="0.0.0.0", port=5000)
 
-def run_https():
-    generar_certificado()
-    context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-    context.load_cert_chain("cert.pem", "key.pem")
-    app.run(host="0.0.0.0", port=5001, ssl_context=context)
-
 if __name__ == "__main__":
-    threading.Thread(target=run_http).start()
-    threading.Thread(target=run_https).start()
+    run_http()
+
 
