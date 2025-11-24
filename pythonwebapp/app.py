@@ -129,7 +129,78 @@ def contacto():
     if request.method == 'POST':
         print("📨 Formulario enviado!")
         return redirect(url_for('confirmacion'))
-    return "<h1 style='color:white;text-align:center;margin-top:40px;'>Contacto aquí (simplificado)</h1>"
+
+    fondo_gif_url = "/static/fondo.gif"
+    html = f"""
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>📩 Contacto</title>
+    <style>
+    :root {{
+        --neon:#00ff9f; --accent:#00ffcc; --card-bg:rgba(0,0,0,0.6);
+    }}
+    html, body {{
+        height:100%; margin:0;
+        font-family:Segoe UI, Roboto, monospace;
+        color:var(--neon); overflow:hidden;
+    }}
+    body {{
+        display:flex; align-items:center; justify-content:center;
+        background:url('{fondo_gif_url}') center/cover no-repeat;
+    }}
+    .card {{
+        background:var(--card-bg); border:1px solid rgba(0,255,150,0.12);
+        padding:32px 44px; border-radius:12px;
+        box-shadow:0 12px 30px rgba(0,255,150,0.06);
+        max-width:450px; text-align:center; z-index:1;
+        backdrop-filter: blur(6px);
+    }}
+    input, textarea {{
+        width:100%; padding:10px; margin-top:10px;
+        border-radius:6px; border:1px solid rgba(0,255,150,0.2);
+        background:rgba(0,0,0,0.45); color:#bfffe6; font-family:inherit;
+    }}
+    textarea {{ resize:none; height:90px; }}
+    .btn {{
+        margin-top:15px; padding:10px 18px; cursor:pointer;
+        border-radius:8px; border:1px solid rgba(255,255,255,0.06);
+        font-weight:700; text-decoration:none; display:inline-block;
+        transition:transform .12s ease, box-shadow .12s ease;
+    }}
+    .send-btn {{
+        background:linear-gradient(180deg,rgba(0,255,170,0.12),rgba(0,255,170,0.05)); color:#bfffe6;
+    }}
+    .back-btn {{
+        background:linear-gradient(180deg,rgba(0,150,255,0.12),rgba(0,150,255,0.05)); color:#bfe6ff;
+        margin-left:10px;
+    }}
+    .btn:hover {{
+        transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,255,150,0.08);
+    }}
+    footer {{
+        position:fixed; bottom:0; left:50%; transform:translateX(-50%);
+        font-size:0.82rem; color:rgba(0,255,150,0.5); padding:10px 0;
+        text-align:center;
+    }}
+    </style>
+    </head>
+    <body>
+        <form method="POST" class="card">
+            <h1>📩 Contacto</h1>
+            <input type="text" name="nombre" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu email" required>
+            <textarea name="mensaje" placeholder="Tu mensaje..." required></textarea>
+            <button class="btn send-btn" type="submit">Enviar</button>
+            <a href="/" class="btn back-btn">Volver</a>
+        </form>
+        <footer>hecho por Alejandro Batista, Joel Santana y Yeremy Travieso</footer>
+    </body>
+    </html>
+    """
+    return html
 
 # -------------------------- #
 # Página de confirmación     #
